@@ -15,7 +15,7 @@ $ ls output
 reverse1.out  reverse2.out  reverse3.out
 ```
 
-- The name of the source file must correspond to the driver program. So, if your main program is in the class `Reverse`, your source file must be named `Reverse.java`.
+- The name of the source file must correspond to the driver program. So, if your `main` program is in the class `Reverse`, your source file must be named `Reverse.java`.
 - Input files go in a directory named `input`, and have the `.in` extension. Expected output files go in a directory named `output`, and have the `.out` extension. Each input file must have a corresponding expected output file. Input and output files must be numbered starting from 1.
 
 Note that in our example, [`Reverse.java`](https://github.com/yuanqing/t/blob/master/example/Reverse.java) is a program that reads lines from `stdin`, reverses the characters of each line, and prints the result to `stdout`.
@@ -29,7 +29,7 @@ $ t 1
 oof
 ```
 
-The above command is equivalent to:
+The above command is equivalent to doing:
 
 ```
 $ javac Reverse.java && java Reverse < input/reverse1.in
@@ -38,7 +38,7 @@ oof
 
 ### Running tests
 
-To feed the program all the input files (from the `input` directory), and compare the program&rsquo;s actual output with the corresponding expected output files (in the `output` directory), invoke `t` without any arguments:
+To feed your program all the input files (from the `input` directory), and compare the actual output with the corresponding expected output files (in the `output` directory), invoke `t` without any arguments:
 
 ```
 $ t
