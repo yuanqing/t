@@ -29,8 +29,8 @@ while [ "$#" -gt 0 ]; do
     test_id=$1
   else
     if [ "$1" = "-h" ] || [ "$1" = "-help" ]; then
-      echo "Usage: t [-h] [class] [test_id]" >&2
-      exit
+      echo "Usage: t [-help] [class] [test_id]" >&2
+      exit 0
     else
       class=$1
     fi
