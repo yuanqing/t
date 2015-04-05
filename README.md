@@ -15,7 +15,10 @@ $ ls output
 reverse1.out  reverse2.out  reverse3.out
 ```
 
-In this example, [`Reverse.java`](https://github.com/yuanqing/t/blob/master/example/Reverse.java) is a program that reads lines from `stdin`, reverses the characters of each line, and prints the result to `stdout`.
+- The name of the source file must correspond to the driver program. So, if your main program is in the class `Reverse`, your source file must be named `Reverse.java`.
+- Input files go in a directory named `input`, and have the `.in` extension. Expected output files go in a directory named `output`, and have the `.out` extension. Each input file must have a corresponding expected output file. Input and output files must be numbered starting from 1.
+
+Note that in our example, [`Reverse.java`](https://github.com/yuanqing/t/blob/master/example/Reverse.java) is a program that reads lines from `stdin`, reverses the characters of each line, and prints the result to `stdout`.
 
 ### Feeding the program an input
 
@@ -66,15 +69,7 @@ $ t
 
 ```
 
-## Tests
-
-You need [Bats](https://github.com/sstephenson/bats) to run the tests:
-
-```
-$ git clone https://github.com/yuanqing/t
-$ cd t/test
-$ bats *.bats
-```
+Note that `t` exits with code 0 if and only if every test passes.
 
 ## Installation
 
@@ -83,6 +78,16 @@ To install `t` into `/usr/local/bin`, simply do:
 ```
 $ curl -k -L -o /usr/local/bin/t https://raw.github.com/yuanqing/t/master/t
 $ chmod +x /usr/local/bin/t
+```
+
+## Tests
+
+To test `t`, you need [Bats](https://github.com/sstephenson/bats):
+
+```
+$ git clone https://github.com/yuanqing/t
+$ cd t/test
+$ bats *.bats
 ```
 
 ## Changelog
