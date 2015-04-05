@@ -61,15 +61,15 @@ fi
 # compile, and exit on error
 javac "$class.java" || exit "$?"
 
-# run the test with the given $test_id
+# feed the program the input file corresponding to $test_id
 if [ -n "$test_id" ]; then
-  # exit if $input_file not found
+  # resolve $input_file, and exit if not found
   input_file="$(find $INPUT_DIR/*$test_id$INPUT_EXT 2>/dev/null | head -1)"
   if [ ! -f "$input_file" ]; then
-    echo "$app: $test_id: No such test" >&2
+    echo "$app: $test_id: Missing input file" >&2
     exit 1
   fi
-  # run the test
+  # run the program, and exit
   java "$class" < "$input_file"
   exit "$?"
 fi
@@ -87,14 +87,14 @@ fi
 num_pass="0"
 echo
 for (( i = 1; i <= num_test; i++ )); do
-  # resolve $input_file
+  # resolve $input_file, and exit if not found
   input_file="$(find $INPUT_DIR/*$i$INPUT_EXT 2>/dev/null | head -1)"
   if [ ! -f "$input_file" ]; then
     echo
     echo "$app: $i: Missing input file" >&2
     exit 1
   fi
-  # resolve $output_file
+  # resolve $output_file, and exit if not found
   output_file="$(find $OUTPUT_DIR/*$i$OUTPUT_EXT 2>/dev/null | head -1)"
   if [ ! -f "$output_file" ]; then
     echo

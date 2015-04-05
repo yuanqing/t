@@ -21,7 +21,7 @@ load test_helper
 
 @test "one test; invalid test id" {
   cd all_passes
-  local expected="t: 42: No such test"
+  local expected="t: 42: Missing input file"
   run t 42    ; [ "$status" -eq 1 ]; [ "${lines[0]}" = "$expected" ]
   run t 42 Foo; [ "$status" -eq 1 ]; [ "${lines[0]}" = "$expected" ]
   run t Foo 42; [ "$status" -eq 1 ]; [ "${lines[0]}" = "$expected" ]
