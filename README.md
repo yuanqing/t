@@ -1,4 +1,4 @@
-# t [![Version](https://img.shields.io/badge/version-v0.0.0-orange.svg?style=flat)](https://github.com/yuanqing/t/releases) [![Build Status](https://img.shields.io/travis/yuanqing/t.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/t)
+# t [![Version](https://img.shields.io/badge/version-v0.1.0-orange.svg?style=flat)](https://github.com/yuanqing/t/releases) [![Build Status](https://img.shields.io/travis/yuanqing/t.svg?branch=master&style=flat)](https://travis-ci.org/yuanqing/t)
 
 > A Bash utility for testing Java programs that read from `stdin` and write to `stdout`.
 
@@ -84,6 +84,11 @@ To install `t` into `/usr/local/bin`, simply do:
 $ curl -k -L -o /usr/local/bin/t https://raw.github.com/yuanqing/t/master/t
 $ chmod +x /usr/local/bin/t
 ```
+
+## Changelog
+
+- 0.1.0
+  - Initial release
 
 ## License
 
