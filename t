@@ -21,12 +21,19 @@ format_str() {
   echo "$str"
 }
 
+app="$(basename $0)"
+
 # read command line arguments
 while [ "$#" -gt 0 ]; do
   if [ "$1" -eq "$1" ] 2>/dev/null; then
     test_id=$1
   else
-    class=$1
+    if [ "$1" = "-h" ] || [ "$1" = "-help" ]; then
+      echo "Usage: t [-h] [class] [test_id]" >&2
+      exit
+    else
+      class=$1
+    fi
   fi
   shift
 done
@@ -37,7 +44,7 @@ if [ -z "$class" ]; then
   class="$(find *.java 2>/dev/null | head -1)"
   # Exit if no .java file found
   if [ -z "$class" ]; then
-    echo "$0: Need a .java file" >&2
+    echo "$app: Need a .java file" >&2
     exit 1
   fi
 fi
@@ -47,22 +54,22 @@ class=${class%.java}
 
 # exit if the .java file does not exist
 if [ ! -f "$class.java" ]; then
-  echo "$0: $class.java: No such file" >&2
+  echo "$app: $class.java: No such file" >&2
   exit 1
 fi
 
 # compile, and exit on error
 javac "$class.java" || exit "$?"
 
-# run the single test with the given $test_id
+# run the test with the given $test_id
 if [ -n "$test_id" ]; then
   # exit if $input_file not found
   input_file="$(find $INPUT_DIR/*$test_id$INPUT_EXT 2>/dev/null | head -1)"
   if [ ! -f "$input_file" ]; then
-    echo "$0: $test_id: No such test" >&2
+    echo "$app: $test_id: No such test" >&2
     exit 1
   fi
-  # run the single test
+  # run the test
   java "$class" < "$input_file"
   exit "$?"
 fi
@@ -72,7 +79,7 @@ num_test="$(find $INPUT_DIR/*$INPUT_EXT 2>/dev/null | wc -l | tr -d '[[:space:]]
 
 # exit if no input files found
 if [ "$num_test" -eq 0 ]; then
-  echo "$0: No input files" >&2
+  echo "$app: No input files" >&2
   exit 1
 fi
 
@@ -84,14 +91,14 @@ for (( i = 1; i <= num_test; i++ )); do
   input_file="$(find $INPUT_DIR/*$i$INPUT_EXT 2>/dev/null | head -1)"
   if [ ! -f "$input_file" ]; then
     echo
-    echo "$0: $i: Missing input file" >&2
+    echo "$app: $i: Missing input file" >&2
     exit 1
   fi
   # resolve $output_file
   output_file="$(find $OUTPUT_DIR/*$i$OUTPUT_EXT 2>/dev/null | head -1)"
   if [ ! -f "$output_file" ]; then
     echo
-    echo "$0: $i: Missing output file" >&2
+    echo "$app: $i: Missing output file" >&2
     exit 1
   fi
   # run the test, redirecting `stderr` to `stdout`
