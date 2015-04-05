@@ -19,7 +19,7 @@ In this example, [`Reverse.java`](https://github.com/yuanqing/t/blob/master/exam
 
 ### Feeding the program an input
 
-To feed the program a particular input file (say, [`input/reverse1.in](https://github.com/yuanqing/t/blob/master/example/input/reverse1.in)), invoke `t` with a single numeric argument:
+To feed the program a particular input file (say, [`input/reverse1.in`](https://github.com/yuanqing/t/blob/master/example/input/reverse1.in)), invoke `t` with a single numeric argument:
 
 ```
 $ t 1
