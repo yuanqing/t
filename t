@@ -38,7 +38,7 @@ while [ "$#" -gt 0 ]; do
   shift
 done
 
-# try to find a .java file if no $class was specified via the command 
+# try to find a .java file if no $class was specified via the command
 # line arguments
 if [ -z "$class" ]; then
   class="$(find *.java 2>/dev/null | head -1)"
@@ -109,7 +109,7 @@ for (( i = 1; i <= num_test; i++ )); do
     format_str "$actual"
   else
     # compare the actual and expected outputs
-    cmp="$(echo $actual | cmp $output_file 2>&1)"
+    cmp="$(echo $actual | cmp $output_file - 2>&1)"
     if [ -n "$cmp" ]; then
       # the actual and expected outputs are different
       printf "%4d $CROSS cmp: " "$i"
